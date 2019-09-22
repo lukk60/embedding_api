@@ -2,11 +2,19 @@ from flask import Flask, jsonify, request, json
 from flask_restful import Resource, Api
 import json
 from embapi.model_inference import load_model, get_sentence_embedding
+from logging import getLogger
+import os
 
+# create logger
+logger = getLogger()
+
+# setup app
 app = Flask(__name__)
 app.config['DEBUG'] = True
 api = Api(app)
 
+# load model
+logger.info("Loading Model...")
 model = load_model('chkpt/german.model')
 
 class FlaskRestApi(Resource):
@@ -38,4 +46,4 @@ class FlaskRestApi(Resource):
 api.add_resource(FlaskRestApi, '/embapi', endpoint = 'flaskrest')
 
 if __name__ == '__main__':
-    app.run(debug=True,  port=8080)
+    app.run(debug=True,  port=8000)
