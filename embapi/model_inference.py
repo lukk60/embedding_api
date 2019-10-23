@@ -1,20 +1,39 @@
 import gensim
+import os
 from pathlib import Path
 import numpy as np
 from nltk.tokenize import word_tokenize
-
+from azure.storage.blob import BlockBlobService
 
 def load_model(modelPath):
-    ''' load pretrained model
+    '''
+    load pretrained model from file. 
+    if file does not exist load model from azure storage
+
     params 
     * path: path to trained model file
     return: 
     * model
     '''
-    trained_model = gensim.models.KeyedVectors.load_word2vec_format(
-        modelPath , binary=True)
 
-    return trained_model
+    # download model from azure storage
+    if not os.path.isfile(modelPath):
+        blob_service = BlockBlobService(
+            account_name = os.getenv("embapi_storage_name"),
+            account_key  = os.getenv("embapi_storage_key")
+        )
+
+        blob_service.get_blob_to_path(
+            "modeldata", 
+            "chkpt/german.model",
+            modelPath)
+
+    # load model file
+    model = gensim.models.KeyedVectors.load_word2vec_format(
+        modelPath, 
+        binary=True)
+
+    return model
 
 def get_word_embeddings(model, words):
     ''' get embeddings for a list of words
