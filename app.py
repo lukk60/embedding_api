@@ -14,7 +14,8 @@ app.config['DEBUG'] = True
 api = Api(app)
 
 # load model
-logger.info("Loading Model...")
+print("Loading Model...")
+print(os.listdir())
 model = load_model('chkpt/german.model')
 
 class FlaskRestApi(Resource):
