@@ -16,7 +16,7 @@ api = Api(app)
 # load model
 print("Loading Model...")
 if not os.path.exists("chkpt"):
-    os.makedir("chkpt")
+    os.makedirs("chkpt")
     
 print(os.listdir())
 print(os.listdir("chkpt"))
