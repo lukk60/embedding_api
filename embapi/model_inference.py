@@ -28,6 +28,12 @@ def load_model(modelPath):
             modelPath,
             timeout=30)
 
+    # debug check folder contents
+    with os.scandir("chkpt") as entries:
+        for e in entries:
+            print(e.name)
+            print(e.stat())
+
     # load model file
     model = gensim.models.KeyedVectors.load_word2vec_format(
         modelPath, 
