@@ -15,7 +15,6 @@ def load_model(modelPath):
     return: 
     * model
     '''
-
     # download model from azure storage
     if not os.path.isfile(modelPath):
         blob_service = BlockBlobService(
