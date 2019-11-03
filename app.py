@@ -16,6 +16,8 @@ api = Api(app)
 # load model
 print("Loading Model...")
 print(os.listdir())
+print(os.listdir("chkpt"))
+print(os.getenv("embapi_storage_name"))
 model = load_model('chkpt/german.model')
 
 class FlaskRestApi(Resource):
