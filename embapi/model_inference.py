@@ -22,7 +22,7 @@ def load_model(modelPath):
             account_key  = os.getenv("embapi_storage_key")
         )
 
-        blob_service.get_blob_to_path()
+        blob_service.get_blob_to_path(
             "modeldata", 
             "chkpt/german.model",
             modelPath,
