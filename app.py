@@ -33,7 +33,10 @@ class FlaskRestApi(Resource):
         # get the posted query
         userdata = request.data
         userModel = json.loads(userdata)
-                
+
+        # debug
+        print("post:", userModel["sent"])
+
         # get embeddings
         emb, oov = get_sentence_embedding(
             model, userModel["sent"], pooling="max"
