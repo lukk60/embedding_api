@@ -17,10 +17,6 @@ api = Api(app)
 print("Loading Model...")
 if not os.path.exists("chkpt"):
     os.makedirs("chkpt")
-    
-print(os.listdir())
-print(os.listdir("chkpt"))
-print(os.getenv("embapi_storage_name"))
 
 model = load_model('chkpt/german.model')
 
