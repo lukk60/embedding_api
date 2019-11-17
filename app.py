@@ -1,9 +1,15 @@
 from flask import Flask, jsonify, request, json
-from flask_restful import Resource, Api
 import json
 from embapi.model_inference import load_model, get_sentence_embedding
 from logging import getLogger
 import os
+
+# catch case sensitive import for linux
+try:
+    from flask_restful import Resource, Api
+
+except ModuleNotFoundError:
+    from Flask_RESTful import Resource, Api
 
 # create logger
 logger = getLogger()
