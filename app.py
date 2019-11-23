@@ -1,3 +1,6 @@
+import locale
+locale.setlocale(locale.LC_ALL, 'de_DE')
+
 from flask import Flask, jsonify, request, json
 import json
 from embapi.model_inference import load_model, get_sentence_embedding
