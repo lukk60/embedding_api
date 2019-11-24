@@ -4,6 +4,7 @@ from embapi.model_inference import load_model, get_sentence_embedding
 from logging import getLogger
 import os
 import nltk
+# download nltk resources
 nltk.download("punkt")
 
 # create logger
@@ -17,6 +18,11 @@ print("Loading Model...")
 if not os.path.exists("chkpt"):
     os.makedirs("chkpt")
 model = load_model('chkpt/german.model')
+
+@app.route("/")
+def index():
+    return("<h1>App running...</h1>")
+
 
 @app.route("/api/", methods = ["POST"])
 def get_embeddings():
