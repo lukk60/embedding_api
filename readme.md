@@ -17,9 +17,9 @@ python app.py
 ## Call api: 
 ### example azure: 
 import requests  
-res = requests.post("https://embeddingapi.azurewebsites.net/embapi", json={"sent":"Dies ist ein deutscher Satz"})   
+res = requests.post("https://embeddingapi.azurewebsites.net/api/", json={"sent":"Dies ist ein deutscher Satz"})   
 res.json()
 
 ### example local:
-res_loc = requests.post("http://localhost:8000/embapi", json={"sent":"Dies ist ein deutscher Satz"})  
+res_loc = requests.post("http://localhost:8000/api/", json={"sent":"Dies ist ein deutscher Satz"})  
 res_loc.json()

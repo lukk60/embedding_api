@@ -1,2 +1,6 @@
 chkpt/*
 .vscode/*
+.ipynb_checkpoints/*
+embapi/__pycache__/*
+__pycache__/*
+__pycache__/app.cpython-36.pyc
