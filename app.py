@@ -3,6 +3,8 @@ import json
 from embapi.model_inference import load_model, get_sentence_embedding
 from logging import getLogger
 import os
+import nltk
+nltk.download("punkt")
 
 # create logger
 logger = getLogger()
